@@ -35,16 +35,38 @@ public class MainActivity extends AppCompatActivity {
         //String priceMessage = "That would be $" + price + " dollars please.";
         //String priceMessage = "You owe " + price + " bucks, dude!";
         //String priceMessage = price + " dollars for " + quantity + " cups of coffee. Pay up!";
-        String priceMessage = "Total items Ordered: " + quantity +". Total price: $" + calculatePrice();
-        priceMessage = priceMessage + "\n Thank you!";
-        displayMessage(priceMessage);
+        //String totalItems = "Total items Ordered: " + quantity;
+        //String totalPrice =  "Total price: $" + calculatePrice();
+        //String thankYou = "Thank you and have a nice day!";
+        //String checkoutMessage = totalItems + "\n" + totalPrice + "\n" + thankYou;
+
+        int price = calculatePrice(quantity);
+        String checkoutMessage = createOrderSummary(price);
+        displayMessage(checkoutMessage);
+    }
+
+    /**
+     *Concatenates a text summary of the order.
+     *
+     * @return Text string of customer name, quantity ordered, total price and thank you!
+     */
+    private String createOrderSummary(int price){
+        String customerName = "Name: Kaptain Kunal";
+        String totalItems = "Quantity: " + quantity;
+        String totalPrice =  "Total: $" + price;
+        String thankYou = "Thank you and have a nice day!";
+        String checkoutMessage = customerName + "\n" + totalItems + "\n" + totalPrice + "\n" + thankYou;
+        return checkoutMessage;
     }
 
     /**
      *Calculates the price of the order.
+     *
+     * @return total order price
      */
-    private int calculatePrice(){
-        return quantity * 5;
+    private int calculatePrice(int quantity){
+        int price =  quantity * 5;
+        return price;
     }
 
     /**
