@@ -30,32 +30,22 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        //int price = quantity * 5;
-        //String priceMessage = "Amount due $" + price;
-        //String priceMessage = "That would be $" + price + " dollars please.";
-        //String priceMessage = "You owe " + price + " bucks, dude!";
-        //String priceMessage = price + " dollars for " + quantity + " cups of coffee. Pay up!";
-        //String totalItems = "Total items Ordered: " + quantity;
-        //String totalPrice =  "Total price: $" + calculatePrice();
-        //String thankYou = "Thank you and have a nice day!";
-        //String checkoutMessage = totalItems + "\n" + totalPrice + "\n" + thankYou;
-
-        int price = calculatePrice(quantity);
-        String checkoutMessage = createOrderSummary(price);
-        displayMessage(checkoutMessage);
+        int price = calculatePrice();
+        displayMessage(createOrderSummary(price));
     }
 
     /**
      *Concatenates a text summary of the order.
      *
-     * @return Text string of customer name, quantity ordered, total price and thank you!
+     * @param price of the order
+     * @return Text string summary of customer name, quantity ordered, total price and thank you!
      */
     private String createOrderSummary(int price){
-        String customerName = "Name: Kaptain Kunal";
-        String totalItems = "Quantity: " + quantity;
-        String totalPrice =  "Total: $" + price;
-        String thankYou = "Thank you and have a nice day!";
-        String checkoutMessage = customerName + "\n" + totalItems + "\n" + totalPrice + "\n" + thankYou;
+        String checkoutMessage = "Name: Kaptain Kunal";
+        checkoutMessage += "\nQuantity: " + quantity;
+        checkoutMessage += "\nTotal: $" + price;
+        checkoutMessage += "\nThank you and have a nice day!";
+        //String checkoutMessage = customerName + "\n" + totalItems + "\n" + totalPrice + "\n" + thankYou;
         return checkoutMessage;
     }
 
@@ -64,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
      *
      * @return total order price
      */
-    private int calculatePrice(int quantity){
-        int price =  quantity * 5;
-        return price;
+    private int calculatePrice(){
+        return quantity * 5;
+
     }
 
     /**
