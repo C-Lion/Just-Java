@@ -31,11 +31,19 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckbox.isChecked();
-     //Step 1:   Log.v("MainActivity", "Has whipped cream: " + hasWhippedCream);
-
+        //Log.v("MainActivity", "Has whipped cream: " + hasWhippedCream);
         int price = calculatePrice();
-        String displayMessage = createOrderSummary(price, hasWhippedCream);
-        // Log.v("MainActivity", "The price is " + price);
+        //Log.v("MainActivity", "The price is " + price);
+        displayMessage(createOrderSummary(price, hasWhippedCream));
+    }
+
+    /**
+     *Calculates the price of the order.
+     *
+     * @return total price
+     */
+    private int calculatePrice(){
+        return quantity * 5;
     }
 
     /**
@@ -47,21 +55,11 @@ public class MainActivity extends AppCompatActivity {
      */
     private String createOrderSummary(int price, boolean addWhippedCream){
         String checkoutMessage = "Name: Kaptain Kunal";
-        checkoutMessage += "Add whipped cream? " + addWhippedCream;
+        checkoutMessage += "\nAdd whipped cream? " + addWhippedCream;
         checkoutMessage += "\nQuantity: " + quantity;
         checkoutMessage += "\nTotal: $" + price;
         checkoutMessage += "\nThank you and have a nice day!";
         return checkoutMessage;
-    }
-
-    /**
-     *Calculates the price of the order.
-     *
-     * @return total order price
-     */
-    private int calculatePrice(){
-        return quantity * 5;
-
     }
 
     /**
@@ -73,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the given price on the screen.
+     * This method used to display the given price on the screen.
      * THIS METHOD IS NO LONGER USED SINCE CREATING THE DISPLAY MESSAGE METHOD.
      * IT CAN BE DELETED NOW.
      *
