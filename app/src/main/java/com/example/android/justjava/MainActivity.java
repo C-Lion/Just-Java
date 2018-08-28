@@ -46,9 +46,10 @@ public class MainActivity extends AppCompatActivity {
         boolean addChocolate = chocolateCheckbox.isChecked();
         Log.v("MainActivity", "Has chocolate: " + addChocolate);
 
-        int price = calculatePrice(hasWhippedCream, addChocolate );
+        int price = calculatePrice(hasWhippedCream, addChocolate);
         //Log.v("MainActivity", "The price is " + price);
-        displayMessage(createOrderSummary(getCustomerName, price, hasWhippedCream, addChocolate));
+        String priceMessage = createOrderSummary(getCustomerName, price, hasWhippedCream, addChocolate);
+        displayMessage(priceMessage);
     }
 
     /**
