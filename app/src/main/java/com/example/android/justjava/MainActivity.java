@@ -14,12 +14,13 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-    int quantity = 0;
+    int quantity = 98;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         boolean addChocolate = chocolateCheckbox.isChecked();
         Log.v("MainActivity", "Has chocolate: " + addChocolate);
 
-        int price = calculatePrice();
+        int price = calculatePrice(hasWhippedCream, addChocolate );
         //Log.v("MainActivity", "The price is " + price);
         displayMessage(createOrderSummary(getCustomerName, price, hasWhippedCream, addChocolate));
     }
@@ -54,9 +55,24 @@ public class MainActivity extends AppCompatActivity {
      *Calculates the price of the order.
      *
      * @return total price
+     * @param hasWhippedCream
+     * @param addChocolate
      */
-    private int calculatePrice(){
-        return quantity * 5;
+    private int calculatePrice(boolean hasWhippedCream, boolean addChocolate){
+        //Price of 1 cup of coffee
+        int basePrice = 5;
+
+        //Add $1 if the user wants to add whipped cream
+        if (hasWhippedCream) {
+            basePrice += 1;
+        }
+        //Add $2 if the user wants to add chocolate
+        if (addChocolate) {
+            basePrice += 2;
+        }
+
+        //Calculate the total price of 1 cup of coffee with requested toppings
+        return quantity * basePrice;
     }
 
     /**
@@ -100,6 +116,12 @@ public class MainActivity extends AppCompatActivity {
      * This method will soon increment the counter for the number of cups of coffee ordered.
      */
     public void increment(View view) {
+        if (quantity == 100) {
+            //Show an error message as a toast
+            Toast.makeText(this, "You cannot have more than 100 coffees", Toast.LENGTH_SHORT).show();
+            // Exit this method since there is nothing left to do
+            return;
+        }
         quantity += 1;
         displayQuantity(quantity);
     }
@@ -109,6 +131,12 @@ public class MainActivity extends AppCompatActivity {
      * This method will SOON decrement the counter for the number of cups of coffee ordered.
      */
     public void decrement(View view) {
+        if (quantity == 1) {
+            // Show an error message as a toast
+            Toast.makeText(this, "You cannot less than one coffee", Toast.LENGTH_SHORT).show();
+            // Exit this method early as there is nothing left to do
+            return;
+        }
         quantity -= 1;
         displayQuantity(quantity);
     }
