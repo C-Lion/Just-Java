@@ -22,7 +22,7 @@ import android.widget.Toast;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-    int quantity = 98;
+    int quantity = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        displayMessage(priceMessage);
+        //displayMessage(priceMessage);
 
 
 
@@ -162,9 +162,16 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * This method displays the given text on the screen.
+     * Commented out because I first commented out the xml to display the Order Summary on the screen.
+     * But I honestly don't know why you would not want to show this message onscreen
+     * since the user always likes to get visual confirmation of their order summary.
+     * Especially before sending an email. In fact, I'd refactor this so that the user has the
+     * opportunity to verify or cancel their order after seeing it, BEFORE it gets emailed!
+     * Now I also need to comment out the displayMessage() method in orderSummary (line 67).
+     * & test that the app still works without all this code.
      */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
-    }
+//    private void displayMessage(String message) {
+//        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+//        orderSummaryTextView.setText(message);
+//    }
 }
