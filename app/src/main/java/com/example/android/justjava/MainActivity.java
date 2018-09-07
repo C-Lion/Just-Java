@@ -32,24 +32,29 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-
+        //Find the user's name
         EditText customer_Name = (EditText) findViewById(R.id.customer_name_field);
         String getCustomerName = customer_Name.getText().toString();
-        Log.v("MainActivity", "Name: " + getCustomerName);
+        //Log.v("MainActivity", "Name: " + getCustomerName);
 
-
+        //Check to see if the user wants whipped cream topping
         CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckbox.isChecked();
         //Log.v("MainActivity", "Has whipped cream: " + hasWhippedCream);
 
+        //Check to see if the user wants whipped chocolate
         CheckBox chocolateCheckbox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean addChocolate = chocolateCheckbox.isChecked();
         Log.v("MainActivity", "Has chocolate: " + addChocolate);
 
+        // Calculate the price based on the above info and display full message to app screeen
         int price = calculatePrice(hasWhippedCream, addChocolate);
         //Log.v("MainActivity", "The price is " + price);
         String priceMessage = createOrderSummary(getCustomerName, price, hasWhippedCream, addChocolate);
         displayMessage(priceMessage);
+
+        //ensure that your intent is handled only by an email app
+
     }
 
     /**
