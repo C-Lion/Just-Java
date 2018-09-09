@@ -26,8 +26,8 @@
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:text="Toppings"
-            android:textAllCaps="true" />
+            android:text="@string/toppings"
+            style="@style/HeaderTextStyle" />
 
         <CheckBox
             android:id="@+id/whipped_cream_checkbox"
@@ -54,7 +54,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:text="Quantity"
-            android:textAllCaps="true" />
+            style="@style/HeaderTextStyle" />
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
